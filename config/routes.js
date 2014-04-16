@@ -1,0 +1,1 @@
+alchemy.connect('blog::view', '/:prefix/blog/:slug', {controller: 'blog_posts', action: 'view'});
