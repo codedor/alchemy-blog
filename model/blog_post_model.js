@@ -81,7 +81,7 @@ Model.extend(function BlogPostModel() {
 		};
 
 		this.actionLists = {
-			paginate: ['index', 'export'],
+			paginate: ['index', 'add'],
 			record: [
 				'view',
 				'edit',
