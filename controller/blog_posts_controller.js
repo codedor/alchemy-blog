@@ -15,17 +15,16 @@ Controller.extend(function BlogPostsController() {
 		var conditions = {},
 		    params     = render.req.params;
 
-		conditions['slug.' + params.prefix] = params.slug;
+		if (params.slug) {
+			conditions['slug.' + params.prefix] = params.slug;
+		} else {
+			conditions._id = params.id;
+		}
 
 		this.getModel('BlogPost').find('first', {conditions: conditions}, function(err, item) {
-
-			pr(item, true);
-
+			render.viewVars.article = item[0].BlogPost;
+			render();
 		});
-
-		pr(render.req.params, true);
-
-
 	};
 
 });

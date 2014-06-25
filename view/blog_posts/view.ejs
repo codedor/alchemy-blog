@@ -1,0 +1,20 @@
+<%
+expands('layouts/body');
+asset.style(['login'], {block: 'head'});
+%>
+
+<% start('main') %>
+<% set_title('Blogs' + ' | India Platform') %>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title"><%= article.title %></h3> <small><%= article.publish_date %></small>
+	</div>
+	<div class="panel-body">
+		<article>
+			<% echo(article.body) %>
+		</article>
+	</div>
+</div>
+
+<% end('main') %>
