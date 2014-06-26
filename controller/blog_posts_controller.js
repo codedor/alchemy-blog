@@ -21,9 +21,14 @@ Controller.extend(function BlogPostsController() {
 			conditions._id = params.id;
 		}
 
-		this.getModel('BlogPost').find('first', {conditions: conditions}, function(err, item) {
-			render.viewVars.article = item[0].BlogPost;
-			render();
+		this.getModel('BlogPost').find('first', {publishableDate: true, conditions: conditions}, function(err, item) {
+			if (item.length) {
+				render.viewVars.article = item[0].BlogPost;
+				render();
+			} else {
+				render('static/404');
+			}
+			
 		});
 	};
 
